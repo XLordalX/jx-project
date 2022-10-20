@@ -697,7 +697,7 @@ func (o *ImportOptions) CloneRepository() error {
 		o.RepoURL = repoURL
 	}
 
-	cloneDir, err = gitclient.CloneToDir(o.Git(), repoURL)
+	cloneDir, err = gitclient.CloneToDir(o.Git(), repoURL, nil)
 	if err != nil {
 		return errors.Wrapf(err, "failed to clone in directory '%s'", cloneDir)
 	}
