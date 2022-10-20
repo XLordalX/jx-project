@@ -697,11 +697,7 @@ func (o *ImportOptions) CloneRepository() error {
 		o.RepoURL = repoURL
 	}
 
-	cloneDir, err := files.CreateUniqueDirectory(o.Dir, gitInfo.Name, files.MaximumNewDirectoryAttempts)
-	if err != nil {
-		return errors.Wrapf(err, "failed to create unique directory for '%s'", o.Dir)
-	}
-	cloneDir, err = gitclient.CloneToDir(o.Git(), repoURL, cloneDir)
+	cloneDir, err = gitclient.CloneToDir(o.Git(), repoURL)
 	if err != nil {
 		return errors.Wrapf(err, "failed to clone in directory '%s'", cloneDir)
 	}
